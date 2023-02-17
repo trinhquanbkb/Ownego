@@ -14,6 +14,7 @@ export default function IndexPage() {
     const [filterTopping, setFilterTopping] = useState({ status: 0 })
     const [storeId, setStoreId] = useState({ id: null })
     const [toppingStatus, setToppingStatus] = useState({ status: false })
+    const [x, setX] = useState({ status: 0 })
 
     useEffect(() => {
         dispatch({
@@ -28,9 +29,9 @@ export default function IndexPage() {
     }, [])
 
     useEffect(() => {
-        if (toppingStatus.status === true) {
+        if (toppingStatus.status === true && x.status === 0) {
             setToppingStatus({ status: false })
-        } else {
+        } else if (toppingStatus.status === true && x.status === 1) {
             let t = []
             listStoreAndProduct.forEach(i => {
                 if (i.idShop === storeClick.id) {
@@ -176,6 +177,7 @@ export default function IndexPage() {
                 }
             })
             localStorage.setItem('productOfStore', JSON.stringify(t))
+            setX({ status: 1 })
         } else {
             let arrData = []
             JSON.parse(localStorage.getItem('productOfStore')).forEach(item => {
