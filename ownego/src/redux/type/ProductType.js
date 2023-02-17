@@ -1,0 +1,3 @@
+export const GET_ALL_PRODUCT = 'GET_ALL_PRODUCT'
+
+export const GET_ALL_PRODUCT_SAGA = 'GET_ALL_PRODUCT_SAGA'
